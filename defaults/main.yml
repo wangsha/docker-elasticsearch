@@ -22,3 +22,4 @@ docker_elasticsearch_log_driver: syslog
 docker_elasticsearch_log_opt:
   syslog-facility: local0
   syslog-tag: es
+docker_api_version: 1.21

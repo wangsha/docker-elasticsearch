@@ -26,6 +26,7 @@
 - name: Run docker elasticsearch container
   become: true
   docker:
+    docker_api_version: "{{ docker_api_version }}"
     env: "{{ docker_elasticsearch_env }}"
     expose: "{{ docker_elasticsearch_expose }}"
     image: "{{ docker_elasticsearch_image }}"
