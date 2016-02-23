@@ -6,7 +6,6 @@ docker_elasticsearch_data_dir: /opt/elasticsearch/data/
 docker_elasticsearch_memtotal: 128m
 docker_elasticsearch_env:
   ES_HEAP_SIZE: "{{ docker_elasticsearch_memtotal }}"
-docker_elasticsearch_hostname: "{{ hostname_name }}"
 docker_elasticsearch_net: default
 docker_elasticsearch_expose:
   - 9200
