@@ -1,0 +1,42 @@
+- name: Ensure docker elasticsearch directories exist
+  become: yes
+  file:
+    state: directory
+    path: "{{ item }}"
+  with_items:
+    - "{{ docker_elasticsearch_conf_dir }}"
+    - "{{ docker_elasticsearch_data_dir }}"
+  tags:
+    - install
+    - upgrade
+
+
+- name: Copy docker elasticsearch configuration settings
+  become: yes
+  copy:
+    src: "{{ docker_elasticsearch_source_conf_dir }}"
+    dest: "{{ docker_elasticsearch_conf_dir }}"
+    mode: 0644
+  tags:
+    - install
+    - settings
+    - upgrade
+
+
+- name: Run docker elasticsearch container
+  become: true
+  docker:
+    env: "{{ docker_elasticsearch_env }}"
+    expose: "{{ docker_elasticsearch_expose }}"
+    image: "{{ docker_elasticsearch_image }}"
+    name: "{{ docker_elasticsearch_name }}"
+    ports: "{{ docker_elasticsearch_ports }}"
+    links: "{{ docker_elasticsearch_links }}"
+    log_driver: "{{ docker_elasticsearch_log_driver }}"
+    log_opt: "{{ docker_elasticsearch_log_opt }}"
+    pull: always
+    restart_policy: always
+    state: reloaded
+  tags:
+    - install
+    - upgrade
