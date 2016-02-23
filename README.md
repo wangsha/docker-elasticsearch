@@ -1,10 +1,10 @@
-docker-redis
+docker-elasticsearch
 ============
 
-[![Build Status](https://travis-ci.org/wangsha/docker-redis.svg?branch=master)](https://travis-ci.org/wangsha/docker-redis)
-[![Ansible Galaxy](https://img.shields.io/badge/AnsibleGalaxy-wangsha.docker--redis-blue.svg)](https://galaxy.ansible.com/wangsha/docker-redis/)
+[![Build Status](https://travis-ci.org/wangsha/docker-elasticsearch.svg?branch=master)](https://travis-ci.org/wangsha/docker-elasticsearch)
+[![Ansible Galaxy](https://img.shields.io/badge/AnsibleGalaxy-wangsha.docker--elasticsearch-blue.svg)](https://galaxy.ansible.com/wangsha/docker-elasticsearch/)
 
-Ansible role to manage and run the redis docker container.
+Ansible role to manage and run the elasticsearch docker container.
 
 Requirements
 ------------
@@ -18,14 +18,16 @@ Examples
 
 Install this module from Ansible Galaxy into the './roles' directory:
 ```bash
-ansible-galaxy install wangsha.docker-redis -p ./roles
+ansible-galaxy install wangsha.docker-elasticsearch -p ./roles
 ```
 
 Use it in a playbook as follows, assuming you already have docker setup:
 ```yaml
 - hosts: 'servers'
   roles:
-    - role: 'wangsha.docker-redis'
+    - role: angstwad.docker_ubuntu
+      become: true
+    - role: wangsha.docker-elasticsearch
       become: true
 ```
 
