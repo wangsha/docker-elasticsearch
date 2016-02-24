@@ -32,10 +32,11 @@ Use it in a playbook as follows, assuming you already have docker setup:
 ```
 
 Have a look at the [defaults/main.yml](defaults/main.yml) for role variables
-that can be overridden! If you need a playbook to set Docker itself, have a
-look at
-[angstwad.docker_ubuntu](https://github.com/angstwad/docker.ubuntu) Galaxy
+that can be overridden.
+
+If you need a playbook to set Docker itself, have a look at [angstwad.docker_ubuntu](https://github.com/angstwad/docker.ubuntu) Galaxy
 role.
+
 
 License
 -------
