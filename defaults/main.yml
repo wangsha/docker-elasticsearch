@@ -13,9 +13,7 @@ docker_elasticsearch_expose:
 docker_elasticsearch_ports:
   - 9200:9200
   - 9300:9300
-docker_elasticsearch_volumes:
-  - "{{ docker_elasticsearch_conf_dir }}:/usr/share/elasticsearch/config"
-  - "{{ docker_elasticsearch_data_dir }}:/usr/share/elasticsearch/data"
+docker_elasticsearch_volumes: []
 docker_elasticsearch_links: []
 docker_elasticsearch_log_driver: syslog
 docker_elasticsearch_log_opt:
