@@ -38,6 +38,12 @@ If you need a playbook to set Docker itself, have a look at [angstwad.docker_ubu
 role.
 
 
+
+Additional References
+---------------------
+- [default docker image](https://hub.docker.com/_/elasticsearch/)
+
+
 License
 -------
 

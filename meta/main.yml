@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: wangsha
-  description: Ansible role to install docker elasticsearch
+  description: Ansible role to install docker elasticsearch container
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker

@@ -1,25 +1,11 @@
-- name: Ensure docker elasticsearch directories exist
-  become: yes
+- name: Ensure docker elasticsearch volume mapping host directories exist
   file:
     state: directory
-    path: "{{ item }}"
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+)$', '\\g<host>')}}"
   with_items:
-    - "{{ docker_elasticsearch_conf_dir }}"
-    - "{{ docker_elasticsearch_data_dir }}"
+    - "{{ docker_elasticsearch_directory_volumes }}"
   tags:
     - install
-    - upgrade
-
-
-- name: Copy docker elasticsearch configuration settings
-  become: yes
-  copy:
-    src: "{{ docker_elasticsearch_source_conf_dir }}"
-    dest: "{{ docker_elasticsearch_conf_dir }}"
-    mode: 0644
-  tags:
-    - install
-    - settings
     - upgrade
 
 
