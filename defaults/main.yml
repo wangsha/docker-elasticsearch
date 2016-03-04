@@ -1,6 +1,6 @@
 docker_elasticsearch_name: elasticsearch
 docker_elasticsearch_image: elasticsearch
-docker_elasticsearch_data_dir: /opt/elasticsearch/data/
+docker_elasticsearch_data_dir: "/opt/{{ docker_elasticsearch_name }}/data/"
 docker_elasticsearch_memtotal: 128m
 docker_elasticsearch_env:
   ES_HEAP_SIZE: "{{ docker_elasticsearch_memtotal }}"
@@ -17,5 +17,5 @@ docker_elasticsearch_links: []
 docker_elasticsearch_log_driver: syslog
 docker_elasticsearch_log_opt:
   syslog-facility: local0
-  syslog-tag: es
+  syslog-tag: "{{ docker_elasticsearch_name }}"
 docker_api_version: 1.21
