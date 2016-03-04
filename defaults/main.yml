@@ -10,8 +10,9 @@ docker_elasticsearch_expose:
   - 9300:9300
 docker_elasticsearch_ports: "{{ docker_elasticsearch_expose }}"
 docker_elasticsearch_directory_volumes:
-  - "{{ docker_elasticsearch_data_dir }}:/usr/share/elasticsearch/data"
+  - "{{ docker_elasticsearch_data_dir }}:/usr/share/elasticsearch/data:rw"
 docker_elasticsearch_file_volumes: []
+docker_elasticsearch_template_path: ""
 docker_elasticsearch_volumes: "{{ docker_elasticsearch_directory_volumes + docker_elasticsearch_file_volumes }}"
 docker_elasticsearch_links: []
 docker_elasticsearch_log_driver: syslog

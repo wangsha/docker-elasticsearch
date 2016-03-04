@@ -1,7 +1,7 @@
-- name: Ensure docker elasticsearch volume mapping host directories exist
+- name: Ensure docke volume mapping host directories exist
   file:
     state: directory
-    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+)$', '\\g<host>')}}"
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
   with_items:
     - "{{ docker_elasticsearch_directory_volumes }}"
   tags:
@@ -9,6 +9,28 @@
     - upgrade
 
 
+- name: Ensure docker volume mapping host file directories exist
+  file:
+    state: directory
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | dirname }}"
+  with_items:
+    - "{{ docker_elasticsearch_file_volumes }}"
+  tags:
+    - install
+    - upgrade
+
+- name: Copy docker volume mapping host file
+  template:
+    src="{{ docker_elasticsearch_template_path }}{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | basename }}.j2"
+    dest="{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
+    mode='0644'
+  with_items:
+    - "{{ docker_elasticsearch_file_volumes }}"
+  tags:
+    - install
+    - upgrade
+    
+    
 - name: Run docker elasticsearch container
   become: true
   docker:
