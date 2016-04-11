@@ -41,6 +41,7 @@
     name: "{{ docker_elasticsearch_name }}"
     ports: "{{ docker_elasticsearch_ports }}"
     links: "{{ docker_elasticsearch_links }}"
+    memory_limit: "{{ docker_elasticsearch_memory_limit }}"
     volumes: "{{ docker_elasticsearch_volumes }}"
     log_driver: "{{ docker_elasticsearch_log_driver }}"
     log_opt: "{{ docker_elasticsearch_log_opt }}"

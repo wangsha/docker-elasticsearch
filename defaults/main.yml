@@ -1,10 +1,9 @@
 docker_elasticsearch_name: elasticsearch
 docker_elasticsearch_image: elasticsearch:latest
 docker_elasticsearch_data_dir: "/opt/{{ docker_elasticsearch_name }}/data/"
-docker_elasticsearch_memtotal: 512MB
+docker_elasticsearch_memtotal: 512m
 docker_elasticsearch_env:
-  ES_HEAP_SIZE: "512m"
-  MAX_LOCKED_MEMORY: "unlimited"
+  ES_HEAP_SIZE: "{{ docker_elasticsearch_memtotal }}"
 docker_elasticsearch_net: default
 docker_elasticsearch_expose:
   - 9200:9200
