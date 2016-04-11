@@ -1,4 +1,5 @@
 - name: Ensure docke volume mapping host directories exist
+  become: true
   file:
     state: directory
     path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
@@ -10,6 +11,7 @@
 
 
 - name: Ensure docker volume mapping host file directories exist
+  become: true
   file:
     state: directory
     path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | dirname }}"
@@ -20,6 +22,7 @@
     - upgrade
 
 - name: Copy docker volume mapping host file
+  become: true
   template:
     src="{{ docker_elasticsearch_template_path }}{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | basename }}.j2"
     dest="{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
