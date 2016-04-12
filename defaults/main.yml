@@ -12,7 +12,7 @@ docker_elasticsearch_ports: "{{ docker_elasticsearch_expose }}"
 docker_elasticsearch_directory_volumes:
   - "{{ docker_elasticsearch_data_dir }}:/usr/share/elasticsearch/data:rw"
 docker_elasticsearch_file_volumes:
-  - "/opt/{{ docker_elasticsearch_name }}/config/elasticsearch.yml:/usr/share/elasticsearch/config/elaticsearch.yml:ro"
+  - "/opt/{{ docker_elasticsearch_name }}/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
 docker_elasticsearch_template_path: ""
 docker_elasticsearch_volumes: "{{ docker_elasticsearch_directory_volumes + docker_elasticsearch_file_volumes }}"
 docker_elasticsearch_links: []
