@@ -37,7 +37,22 @@ that can be overridden.
 If you need a playbook to set Docker itself, have a look at [angstwad.docker_ubuntu](https://github.com/angstwad/docker.ubuntu) Galaxy
 role.
 
+Performance Tuning
+------------------
+To enable `mlockall` on docker container, follow [this](http://stackoverflow.com/a/26365300) post to configure docker deamon.
+Top section of the file looks like:
+```bash
+description "Docker daemon"
 
+start on (filesystem and net-device-up IFACE!=lo)
+stop on runlevel [!2345]
+limit nofile 524288 1048576
+limit nproc 524288 1048576
+limit memlock unlimited unlimited
+respawn
+
+...
+```
 
 Custom volume mappings
 ----------------------
