@@ -33,7 +33,17 @@
     - install
     - upgrade
     
-    
+
+- name: Remove existing {{ docker_elasticsearch_name }} container
+  docker:
+    docker_api_version: "{{ docker_api_version }}"
+    image: "{{ docker_elasticsearch_image }}"
+    name: "{{ docker_elasticsearch_name }}"
+    state: absent
+  tags:
+    - install
+    - upgrade
+
 - name: Run docker elasticsearch container
   become: true
   docker:

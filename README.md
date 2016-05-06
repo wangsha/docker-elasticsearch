@@ -40,7 +40,7 @@ role.
 Performance Tuning
 ------------------
 To enable `mlockall` on docker container, follow [this](http://stackoverflow.com/a/26365300) post to configure docker deamon.
-Top section of the file looks like:
+Top section of the file `/etc/init/docker.conf` looks like:
 ```bash
 description "Docker daemon"
 
