@@ -23,5 +23,5 @@ docker_elasticsearch_links: []
 docker_elasticsearch_log_driver: syslog
 docker_elasticsearch_log_opt:
   syslog-facility: local0
-  syslog-tag: "{{ docker_elasticsearch_name }}"
+  tag: "{{ docker_elasticsearch_name }}"
 docker_api_version: 1.21
